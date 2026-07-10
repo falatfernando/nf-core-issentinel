@@ -21,7 +21,7 @@ process COMPILE_RESULTS {
     # 1. Trick your python script's glob pattern!
     # We create a dummy folder that matches the "results/*/*.csv" expected pattern
     mkdir -p dummy_results/sample_folder/
-    mv *_is6110_candidates.csv dummy_results/sample_folder/
+    mv *_is_candidates.csv dummy_results/sample_folder/
 
     # 2. Run your unchanged Python script
     compile_results.py \\
