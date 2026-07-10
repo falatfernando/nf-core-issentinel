@@ -18,7 +18,7 @@ process EXTRACT_IS_CANDIDATES {
     path gbk_file
 
     output:
-    tuple val(sample_id), path("${sample_id}_is6110_candidates.csv"), emit: candidates
+    tuple val(sample_id), path("${sample_id}_is_candidates.csv"), emit: candidates
 
     script:
     """
