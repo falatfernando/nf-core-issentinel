@@ -152,10 +152,10 @@ def collapse_dsb_signatures(df, max_dist=10):
 
 def compile_results(results_dir, raw_out, formatted_out, max_dist=10):
     """
-    Finds all *_is6110_candidates.csv files, merges them,
+    Finds all *_is_candidates.csv files, merges them,
     and produces both raw compiled and formatted final reports.
     """
-    search_pattern = os.path.join(results_dir, "*", "*_is6110_candidates.csv")
+    search_pattern = os.path.join(results_dir, "*", "*_is_candidates.csv")
     candidate_files = glob.glob(search_pattern)
     
     if not candidate_files:
@@ -167,7 +167,7 @@ def compile_results(results_dir, raw_out, formatted_out, max_dist=10):
     all_dfs = []
     for f in candidate_files:
         filename = os.path.basename(f)
-        sample_id = filename.replace("_is6110_candidates.csv", "")
+        sample_id = filename.replace("_is_candidates.csv", "")
         
         try:
             df = pd.read_csv(f)
