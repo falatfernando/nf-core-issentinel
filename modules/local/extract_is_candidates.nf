@@ -1,4 +1,4 @@
-process ANNOTATE_DELLY {
+process EXTRACT_IS_CANDIDATES {
     tag "Annotating $sample_id"
     label 'process_single'
     
@@ -22,10 +22,10 @@ process ANNOTATE_DELLY {
 
     script:
     """
-    annotate_delly.py \\
+    extract_is_candidates.py \\
         --vcf ${vcf} \\
         --gbk ${gbk_file} \\
-        --out ${sample_id}_is6110_candidates.csv \\
+        --out ${sample_id}_is_candidates.csv \\
         --max-dist ${params.max_dist} \\
         --min-pe-iso ${params.min_pe_iso} \\
         --min-sr-iso ${params.min_sr_iso} \\
