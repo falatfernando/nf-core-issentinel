@@ -2,11 +2,10 @@ process COMPILE_RESULTS {
     tag "Compiling Master Table"
     label 'process_single'
     
-    // We reuse the exact same container from ANNOTATE_DELLY because it already has Pandas!
-    conda "conda-forge::pandas=2.1.0 bioconda::biopython=1.81"
+    conda "conda-forge::pandas=2.2.1"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/mulled-v2-0bc25c1566cf2c2bc016a6d6168ceb26090a2a5e:275217823f95f4ad6111fdbd783d085df7ffb2a0-0' :
-        'quay.io/biocontainers/mulled-v2-0bc25c1566cf2c2bc016a6d6168ceb26090a2a5e:275217823f95f4ad6111fdbd783d085df7ffb2a0-0' }"
+        'https://depot.galaxyproject.org/singularity/pandas:2.2.1' :
+        'quay.io/biocontainers/pandas:2.2.1' }"
 
     // IMPORTANT: 'path' here accepts a LIST of hundreds of files, not a single file!
     input:

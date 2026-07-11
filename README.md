@@ -21,54 +21,83 @@
 
 ## Introduction
 
-**nf-core/issentinel** is a bioinformatics pipeline that ...
+**nf-core/issentinel** is a bioinformatics pipeline designed to detect new Insertion Sequence (IS) element insertions in bacterial genomes using high-throughput sequencing data (paired-end FastQ reads).
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+The pipeline uses an engineered reference genome containing a "decoy contig" of the insertion sequence of interest, alongside masking of existing reference insertion sequence locations. This setup ensures that reads spanning new insertion junctions map with high mapping quality (MAPQ) to both the genomic target and the decoy sequence. Structural variant calling is subsequently performed using Delly to identify these junctions as translocations or insertions, and candidate insertions are annotated, compiled, and filtered.
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/community/brand/workflow-schematics#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
+### Pipeline Workflow
+1. **Reference Engineering (`PREPARE_REFERENCE`)**: Masks existing insertion sequence coordinates in the reference genome and appends the target IS sequence as a decoy contig.
+2. **Reference Indexing (`INDEX_REFERENCE`)**: Indexes the engineered reference genome using `bwa index` and `samtools faidx`.
+3. **Read Alignment (`BWA_ALIGN`)**: Aligns paired-end reads to the engineered decoy reference using BWA-MEM.
+4. **Structural Variant Calling (`DELLY_CALL`)**: Calls translocations (TRA/BND) and insertions (INS) using Delly.
+5. **Candidate Extraction (`EXTRACT_IS_CANDIDATES`)**: Parses the VCF output, filtering for insertions supported by paired-end and split-read evidence, and annotating them with features like insertion coordinates, orientation, double-strand break (DSB) junctions, allele frequency (VAF), and heteropopulation status.
+6. **Result Compilation (`COMPILE_RESULTS`)**: Aggregates candidate insertions across all samples into a single master summary table.
+7. **Region of Interest Filtering (`FILTER_REGION`)**: (Optional) Filters candidates within specific target coordinate windows (e.g., drug resistance loci).
 
 ## Usage
 
 > [!NOTE]
 > If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/get_started/environment_setup/overview) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/get_started/run-your-first-pipeline) with `-profile test` before running the workflow on actual data.
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
-
 First, prepare a samplesheet with your input data that looks as follows:
 
 `samplesheet.csv`:
-
 ```csv
 sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
+ERR13259960,reads/ERR13259960_1.fastq.gz,reads/ERR13259960_2.fastq.gz
+ERR13260062,reads/ERR13260062_1.fastq.gz,reads/ERR13260062_2.fastq.gz
 ```
 
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
+Each row represents a sample with its corresponding paired-end FastQ reads.
 
--->
-
-Now, you can run the pipeline using:
-
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
+Now, you can run the pipeline using the command below. Note that all parameters starting from `--run_prep` are optional (they are shown here explicitly, but omitting them will fall back to the default settings for MTB H37Rv, IS6110, and the mmpL5-Rv0678 region):
 
 ```bash
 nextflow run nf-core/issentinel \
-   -profile <docker/singularity/.../institute> \
+   -profile docker \
    --input samplesheet.csv \
-   --outdir <OUTDIR>
+   --outdir results \
+   --run_prep true \
+   --run_pipeline true \
+   --run_compile true \
+   --run_filter true \
+   --decoy_name 'IS6110' \
+   --ref_genome 'reference/H37RV.fna' \
+   --gbk_file 'reference/H37RV_REF.gb' \
+   --is_fasta 'reference/IS6110.fasta' \
+   --filter_name 'mmpL5-Rv0678' \
+   --filter_chrom 'NC_000962.3' \
+   --filter_start 775586 \
+   --filter_end 779487
 ```
 
 > [!WARNING]
 > Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see [docs](https://nf-co.re/docs/running/run-pipelines#using-parameter-files).
 
 For more details and further functionality, please refer to the [usage documentation](https://nf-co.re/issentinel/usage) and the [parameter documentation](https://nf-co.re/issentinel/parameters).
+
+## Pipeline Parameters
+
+`nf-core/issentinel` is designed to be bacterial-agnostic and insertion sequence (IS)-agnostic. While it defaults to analyzing the *Mycobacterium tuberculosis* (H37Rv) genome with the `IS6110` insertion sequence and filtering for the `mmpL5-Rv0678` genomic region, you can fully customize the reference files, decoy names, and genomic coordinates.
+
+### Reference and IS Options
+* `--decoy_name`: Name of the insertion sequence decoy contig (default: `'IS6110'`).
+* `--ref_genome`: Path to the raw FASTA reference file (default: `"${projectDir}/reference/H37RV.fna"`).
+* `--gbk_file`: Path to the GenBank reference record used for candidate annotation (default: `"${projectDir}/reference/H37RV_REF.gb"`).
+* `--is_fasta`: Path to the FASTA sequence of the Insertion Sequence element to mask and decoy (default: `"${projectDir}/reference/IS6110.fasta"`).
+
+### Run Execution Toggles
+* `--run_prep`: Run reference genome masking/decoy engineering (default: `false`).
+* `--run_pipeline`: Run BWA alignment, SV calling with Delly, and candidate extraction (default: `true`).
+* `--run_compile`: Compile all sample candidates into a single master summary table (default: `true`).
+* `--run_filter`: Filter the compiled master table for variants falling within a specific genomic Region of Interest (default: `false`).
+
+### Genomic Region Filtering
+When `--run_filter` is set to `true`, you can define custom target coordinate windows:
+* `--filter_name`: Custom name of the target region/genes (default: `'mmpL5-Rv0678'`).
+* `--filter_chrom`: Chromosome/contig name matching the reference FASTA (default: `'NC_000962.3'`).
+* `--filter_start`: 1-based start position of the target region window (default: `775586`).
+* `--filter_end`: 1-based end position of the target region window (default: `779487`).
 
 ## Pipeline output
 
@@ -80,9 +109,6 @@ For more details about the output files and reports, please refer to the
 
 nf-core/issentinel was originally written by Fernando Falat.
 
-We thank the following people for their extensive assistance in the development of this pipeline:
-
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
 
 ## Contributions and Support
 
@@ -92,10 +118,8 @@ For further information or help, don't hesitate to get in touch on the [Slack `#
 
 ## Citations
 
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use nf-core/issentinel for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
 
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
+If you use nf-core/issentinel for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
 
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 

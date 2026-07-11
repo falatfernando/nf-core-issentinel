@@ -3,7 +3,7 @@ process INDEX_REFERENCE {
     label 'process_single'
     
     // Reuse the BWA + Samtools container
-    container "quay.io/biocontainers/mulled-v2-fe8faa35dbf6dc65a0f7f5d4ea12e31a79fd2b40:219b6c272b25e7e642ae3ff0bf0c5c81a5135ab4-0"
+    container "quay.io/biocontainers/mulled-v2-fe8faa35dbf6dc65a0f7f5d4ea12e31a79f73e40:219b6c272b25e7e642ae3ff0bf0c5c81a5135ab4-0"
 
     input:
     path ref_fasta

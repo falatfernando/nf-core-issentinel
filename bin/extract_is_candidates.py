@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 import sys
 import pandas as pd
@@ -38,8 +39,21 @@ def parse_vcf_for_is6110(vcf_path, is_regions, decoy_name="IS6110", min_len=1300
     
     Returns a list of dictionaries with hit info.
     """
+    import gzip
     hits = []
-    with open(vcf_path, 'r') as f:
+    
+    # Check if the file is gzipped
+    is_gzip = False
+    try:
+        with open(vcf_path, 'rb') as test_f:
+            is_gzip = test_f.read(2) == b'\x1f\x8b'
+    except Exception:
+        pass
+        
+    opener = gzip.open if is_gzip else open
+    mode = 'rt' if is_gzip else 'r'
+    
+    with opener(vcf_path, mode) as f:
         for line in f:
             if line.startswith('#'):
                 continue

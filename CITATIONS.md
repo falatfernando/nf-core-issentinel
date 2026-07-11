@@ -10,6 +10,26 @@
 
 ## Pipeline tools
 
+- [BWA](https://pubmed.ncbi.nlm.nih.gov/19451168/)
+
+  > Li H, Durbin R. Fast and accurate short read alignment with Burrows-Wheeler transform. Bioinformatics. 2009 Jul 15;25(14):1754-60. doi: 10.1093/bioinformatics/btp324. Epub 2009 May 18. PubMed PMID: 19451168; PubMed Central PMCID: PMC2705234.
+
+- [SAMtools](https://pubmed.ncbi.nlm.nih.gov/19505943/)
+
+  > Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R; 1000 Genome Project Data Processing Subgroup. The Sequence Alignment/Map format and SAMtools. Bioinformatics. 2009 Aug 15;25(16):2078-9. doi: 10.1093/bioinformatics/btp352. Epub 2009 Jun 8. PubMed PMID: 19505943; PubMed Central PMCID: PMC2723002.
+
+- [Delly](https://pubmed.ncbi.nlm.nih.gov/22962466/)
+
+  > Rausch T, Zichner T, Schlattl A, Stütz AM, Benes V, Korbel JO. DELLY: structural variant discovery by integrated paired-end and split-read analysis. Bioinformatics. 2012 Sep 15;28(18):i333-9. doi: 10.1093/bioinformatics/bts378. PubMed PMID: 22962466; PubMed Central PMCID: PMC3436805.
+
+- [Biopython](https://pubmed.ncbi.nlm.nih.gov/19304878/)
+
+  > Cock PJ, Antao T, Chang JT, Chapman BA, Cox CJ, Dalke A, Friedberg I, Hamelryck T, Kauff F, Wilczynski B, de Hoon MJ. Biopython: freely available Python tools for computational molecular biology and bioinformatics. Bioinformatics. 2009 Jun 1;25(11):1422-3. doi: 10.1093/bioinformatics/btp163. Epub 2009 Mar 20. PubMed PMID: 19304878; PubMed Central PMCID: PMC2682519.
+
+- [Pandas](https://pandas.pydata.org/)
+
+  > McKinney W. Data structures for statistical computing in Python. In Proceedings of the 9th Python in Science Conference. 2010; 445:51-56.
+
 ## Software packaging/containerisation tools
 
 - [Anaconda](https://anaconda.com)

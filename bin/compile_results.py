@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import pandas as pd
 import os
 import glob
@@ -210,7 +211,8 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    results_path = os.path.join(base_dir, args.results)
+    results_path = os.path.abspath(args.results)
+    raw_out_path = os.path.abspath(args.raw_out)
+    formatted_out_path = os.path.abspath(args.formatted_out)
     
-    compile_results(results_path, args.raw_out, args.formatted_out, max_dist=args.max_dist)
+    compile_results(results_path, raw_out_path, formatted_out_path, max_dist=args.max_dist)

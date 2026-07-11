@@ -1,10 +1,33 @@
-.nextflow*
+# Nextflow system files
+.nextflow/
+.nextflow.log*
 work/
-data/
+
+# Pipeline outputs and results
 results/
+test_results/
+
+# User data and input reads
+reads/
+data/
+
+# OS-specific files
 .DS_Store
+Thumbs.db
+
+# Python bytecode and caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Testing and temporary files
 testing/
 testing*
-*.pyc
 null/
 .lineage/
