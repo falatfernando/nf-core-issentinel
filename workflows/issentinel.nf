@@ -41,14 +41,10 @@ workflow ISSENTINEL {
     // ==========================================================
     // STEP 0: PREPARE REFERENCE
     // ==========================================================
-    if (params.run_prep) {
-        PREPARE_REFERENCE(ch_gbk, ch_raw_ref, ch_is_fasta)
-        // If we ran prep, the active reference is now the newly masked output
-        ch_active_ref = PREPARE_REFERENCE.out.masked_fasta
-    } else {
-        // If we skip prep, we just use the reference file provided in params
-        ch_active_ref = ch_raw_ref
-    }
+    PREPARE_REFERENCE(ch_gbk, ch_raw_ref, ch_is_fasta)
+    // The active reference is now the newly masked output containing the decoy contig
+    ch_active_ref = PREPARE_REFERENCE.out.masked_fasta
+
 
     // Always index the active reference before alignment
     INDEX_REFERENCE(ch_active_ref)

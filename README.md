@@ -50,14 +50,13 @@ ERR13260062,reads/ERR13260062_1.fastq.gz,reads/ERR13260062_2.fastq.gz
 
 Each row represents a sample with its corresponding paired-end FastQ reads.
 
-Now, you can run the pipeline using the command below. Note that all parameters starting from `--run_prep` are optional (they are shown here explicitly, but omitting them will fall back to the default settings for MTB H37Rv, IS6110, and the mmpL5-Rv0678 region):
+Now, you can run the pipeline using the command below. Note that all parameters starting from `--run_pipeline` are optional (they are shown here explicitly, but omitting them will fall back to the default settings for MTB H37Rv, IS6110, and the mmpL5-Rv0678 region):
 
 ```bash
 nextflow run nf-core/issentinel \
    -profile docker \
    --input samplesheet.csv \
    --outdir results \
-   --run_prep true \
    --run_pipeline true \
    --run_compile true \
    --run_filter true \
@@ -87,7 +86,6 @@ For more details and further functionality, please refer to the [usage documenta
 * `--is_fasta`: Path to the FASTA sequence of the Insertion Sequence element to mask and decoy (default: `"${projectDir}/reference/IS6110.fasta"`).
 
 ### Run Execution Toggles
-* `--run_prep`: Run reference genome masking/decoy engineering (default: `false`).
 * `--run_pipeline`: Run BWA alignment, SV calling with Delly, and candidate extraction (default: `true`).
 * `--run_compile`: Compile all sample candidates into a single master summary table (default: `true`).
 * `--run_filter`: Filter the compiled master table for variants falling within a specific genomic Region of Interest (default: `false`).

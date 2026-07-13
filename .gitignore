@@ -8,8 +8,8 @@ results/
 test_results/
 
 # User data and input reads
-reads/
-data/
+reads/*
+data/*
 
 # OS-specific files
 .DS_Store
