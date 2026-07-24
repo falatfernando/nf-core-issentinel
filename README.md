@@ -27,7 +27,7 @@ The pipeline uses an engineered reference genome containing a "decoy contig" of 
 
 ### Pipeline Workflow
 
-![nf-core/issentinel Pipeline Workflow](docs/images/is_sentinel-en.drawio.svg)
+![nf-core/issentinel Pipeline Workflow](docs/images/is_sentinel-en.svg)
 
 1. **Reference Engineering (`PREPARE_REFERENCE`)**: Masks existing insertion sequence coordinates in the reference genome and appends the target IS sequence as a decoy contig.
 2. **Reference Indexing (`INDEX_REFERENCE`)**: Indexes the engineered reference genome using `bwa index` and `samtools faidx`.
