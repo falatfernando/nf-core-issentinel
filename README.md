@@ -26,6 +26,9 @@
 The pipeline uses an engineered reference genome containing a "decoy contig" of the insertion sequence of interest, alongside masking of existing reference insertion sequence locations. This setup ensures that reads spanning new insertion junctions map with high mapping quality (MAPQ) to both the genomic target and the decoy sequence. Structural variant calling is subsequently performed using Delly to identify these junctions as translocations or insertions, and candidate insertions are annotated, compiled, and filtered.
 
 ### Pipeline Workflow
+
+![nf-core/issentinel Pipeline Workflow](docs/images/is_sentinel-en.drawio.png)
+
 1. **Reference Engineering (`PREPARE_REFERENCE`)**: Masks existing insertion sequence coordinates in the reference genome and appends the target IS sequence as a decoy contig.
 2. **Reference Indexing (`INDEX_REFERENCE`)**: Indexes the engineered reference genome using `bwa index` and `samtools faidx`.
 3. **Read Alignment (`BWA_ALIGN`)**: Aligns paired-end reads to the engineered decoy reference using BWA-MEM.
