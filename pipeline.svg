@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="863" height="272" viewBox="0 0 863 272" style="color-scheme: light dark">
+<defs>
+</defs>
+<metadata id="diagram-manifest" data-schema-version="1.0"><![CDATA[{"groups":[{"color":"#2db572","id":"main","label":"Main"}],"height":272,"match":{"flags":"i","target":"fqProcessName","type":"regex"},"nodes":[{"groups":["main"],"h":10.0,"id":"index_reference","label":"Index Reference","patterns":[],"r":5.0,"region":"issentinel","rx":5.0,"w":10.0,"x":131.5,"y":120.0},{"groups":["main"],"h":10.0,"id":"bwa_align","label":"Bwa Align","patterns":[],"r":5.0,"region":"detect_is","rx":5.0,"w":10.0,"x":339.0,"y":120.0},{"groups":["main"],"h":10.0,"id":"delly_call","label":"Delly Call","patterns":[],"r":5.0,"region":"detect_is","rx":5.0,"w":10.0,"x":444.0,"y":120.0},{"groups":["main"],"h":10.0,"id":"extract_is_candidates","label":"Extrac Is Candid","patterns":[],"r":5.0,"region":"detect_is","rx":5.0,"w":10.0,"x":504.0,"y":120.0},{"groups":["main"],"h":10.0,"id":"compile_results","label":"Compile Results","patterns":[],"r":5.0,"region":"reporting","rx":5.0,"w":10.0,"x":731.5,"y":120.0}],"regions":[{"id":"issentinel","label":"Issentinel"},{"id":"detect_is","label":"Detect Is"},{"id":"reporting","label":"Reporting"}],"title":"Issentinel / Detect Is Pipeline","version":"1.0","width":863}]]></metadata>
+<style>.nf-metro-bg { fill: var(--nfm-map-bg, light-dark(#f5f5f5, #2b2b2b)); }
+.nf-metro-title { fill: var(--nfm-map-title-color, light-dark(#111111, #ffffff)); }
+.nf-metro-station-label { fill: var(--nfm-map-label-color, light-dark(#333333, #e0e0e0)); }
+.nf-metro-section-box { fill: var(--nfm-map-section-fill, light-dark(#ededed, #373737)); stroke: var(--nfm-map-section-stroke, light-dark(#e6e6e6, #595959)); }
+.nf-metro-section-label { fill: var(--nfm-map-section-label-color, light-dark(#666666, #c8c8c8)); }
+.nf-metro-group-label { fill: var(--nfm-map-section-label-color, light-dark(#666666, #c8c8c8)); }
+.nf-metro-group-underline { stroke: var(--nfm-map-section-label-color, light-dark(#666666, #c8c8c8)); }
+.nf-metro-legend-bg { fill: var(--nfm-map-legend-bg, light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.3))); }
+.nf-metro-legend-text { fill: var(--nfm-map-legend-text-color, light-dark(#333333, #e0e0e0)); }
+.nf-metro-marker-stroke { stroke: var(--nfm-map-marker-stroke, light-dark(#333333, #f0f0f0)); }
+.nf-metro-label-halo { fill: var(--nfm-map-bg, light-dark(#f5f5f5, #2b2b2b)); stroke: var(--nfm-map-bg, light-dark(#f5f5f5, #2b2b2b)); }</style>
+<rect x="0" y="0" width="863" height="272" fill="#2b2b2b" class="nf-metro-bg" />
+<text x="60.0" y="30.0" font-size="24.0" fill="#ffffff" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" class="nf-metro-title">Issentinel / Detect Is Pipeline</text>
+<rect x="60.0" y="70.0" width="143.0" height="100.0" rx="8" ry="8" fill="#373737" stroke="#595959" stroke-width="1.0" class="nf-metro-section-box" data-section-id="issentinel" data-section-lines="main" />
+<circle cx="71.0" cy="55.0" r="11" fill="#333333" class="nf-metro-section-num-circle" data-section-id="issentinel" />
+<text x="71.0" y="55.0" font-size="12" fill="#ffffff" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dy="0.3em" data-section-id="issentinel">1</text>
+<text x="87.0" y="55.0" font-size="16.0" fill="#c8c8c8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" dy="0.3em" class="nf-metro-section-label" data-section-id="issentinel">Issentinel</text>
+<rect x="253.0" y="70.0" width="327.0" height="100.0" rx="8" ry="8" fill="#373737" stroke="#595959" stroke-width="1.0" class="nf-metro-section-box" data-section-id="detect_is" data-section-lines="main" />
+<circle cx="264.0" cy="55.0" r="11" fill="#333333" class="nf-metro-section-num-circle" data-section-id="detect_is" />
+<text x="264.0" y="55.0" font-size="12" fill="#ffffff" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dy="0.3em" data-section-id="detect_is">2</text>
+<text x="280.0" y="55.0" font-size="16.0" fill="#c8c8c8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" dy="0.3em" class="nf-metro-section-label" data-section-id="detect_is">Detect Is</text>
+<rect x="660.0" y="70.0" width="143.0" height="100.0" rx="8" ry="8" fill="#373737" stroke="#595959" stroke-width="1.0" class="nf-metro-section-box" data-section-id="reporting" data-section-lines="main" />
+<circle cx="671.0" cy="55.0" r="11" fill="#333333" class="nf-metro-section-num-circle" data-section-id="reporting" />
+<text x="671.0" y="55.0" font-size="12" fill="#ffffff" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dy="0.3em" data-section-id="reporting">3</text>
+<text x="687.0" y="55.0" font-size="16.0" fill="#c8c8c8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" dy="0.3em" class="nf-metro-section-label" data-section-id="reporting">Reporting</text>
+<path d="M339.0,120.0 L444.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M444.0,120.0 L504.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M131.5,120.0 L203.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M253.0,120.0 L339.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M253.0,120.0 L444.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M504.0,120.0 L580.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M660.0,120.0 L731.5,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M203.0,120.0 L253.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<path d="M580.0,120.0 L660.0,120.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" class="metro-line-main" data-line-id="main" />
+<g class="nf-metro-station-group" data-node-id="index_reference" data-node-cx="131.5" data-node-cy="120.0" data-node-r="5.0" data-node-groups="main" data-node-region="issentinel" data-node-w="10.0" data-node-h="10.0" data-node-rx="5.0">
+<rect x="126.5" y="115.0" width="10.0" height="10.0" rx="5.0" ry="5.0" fill="#ffffff" stroke="#333333" stroke-width="1.5" class="nf-metro-station" data-station-id="index_reference" data-station-lines="main" data-station-label="Index Reference" data-section-id="issentinel" data-section-name="Issentinel" />
+</g>
+<g class="nf-metro-station-group" data-node-id="bwa_align" data-node-cx="339.0" data-node-cy="120.0" data-node-r="5.0" data-node-groups="main" data-node-region="detect_is" data-node-w="10.0" data-node-h="10.0" data-node-rx="5.0">
+<rect x="334.0" y="115.0" width="10.0" height="10.0" rx="5.0" ry="5.0" fill="#ffffff" stroke="#333333" stroke-width="1.5" class="nf-metro-station" data-station-id="bwa_align" data-station-lines="main" data-station-label="Bwa Align" data-section-id="detect_is" data-section-name="Detect Is" />
+</g>
+<g class="nf-metro-station-group" data-node-id="delly_call" data-node-cx="444.0" data-node-cy="120.0" data-node-r="5.0" data-node-groups="main" data-node-region="detect_is" data-node-w="10.0" data-node-h="10.0" data-node-rx="5.0">
+<rect x="439.0" y="115.0" width="10.0" height="10.0" rx="5.0" ry="5.0" fill="#ffffff" stroke="#333333" stroke-width="1.5" class="nf-metro-station" data-station-id="delly_call" data-station-lines="main" data-station-label="Delly Call" data-section-id="detect_is" data-section-name="Detect Is" />
+</g>
+<g class="nf-metro-station-group" data-node-id="extract_is_candidates" data-node-cx="504.0" data-node-cy="120.0" data-node-r="5.0" data-node-groups="main" data-node-region="detect_is" data-node-w="10.0" data-node-h="10.0" data-node-rx="5.0">
+<rect x="499.0" y="115.0" width="10.0" height="10.0" rx="5.0" ry="5.0" fill="#ffffff" stroke="#333333" stroke-width="1.5" class="nf-metro-station" data-station-id="extract_is_candidates" data-station-lines="main" data-station-label="Extrac Is Candid" data-section-id="detect_is" data-section-name="Detect Is" />
+</g>
+<g class="nf-metro-station-group" data-node-id="compile_results" data-node-cx="731.5" data-node-cy="120.0" data-node-r="5.0" data-node-groups="main" data-node-region="reporting" data-node-w="10.0" data-node-h="10.0" data-node-rx="5.0">
+<rect x="726.5" y="115.0" width="10.0" height="10.0" rx="5.0" ry="5.0" fill="#ffffff" stroke="#333333" stroke-width="1.5" class="nf-metro-station" data-station-id="compile_results" data-station-lines="main" data-station-label="Compile Results" data-section-id="reporting" data-section-name="Reporting" />
+</g>
+<text x="339.0" y="131.0" font-size="13.0" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="3.0" stroke-linejoin="round" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" aria-hidden="true" class="nf-metro-label-halo" text-anchor="middle" dominant-baseline="hanging">Bwa Align</text>
+<text x="339.0" y="131.0" font-size="13.0" fill="#e0e0e0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="hanging" data-station-id="bwa_align" class="nf-metro-station-label">Bwa Align</text>
+<text x="131.5" y="131.0" font-size="13.0" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="3.0" stroke-linejoin="round" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" aria-hidden="true" class="nf-metro-label-halo" text-anchor="middle" dominant-baseline="hanging">Index Reference</text>
+<text x="131.5" y="131.0" font-size="13.0" fill="#e0e0e0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="hanging" data-station-id="index_reference" class="nf-metro-station-label">Index Reference</text>
+<text x="731.5" y="131.0" font-size="13.0" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="3.0" stroke-linejoin="round" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" aria-hidden="true" class="nf-metro-label-halo" text-anchor="middle" dominant-baseline="hanging">Compile Results</text>
+<text x="731.5" y="131.0" font-size="13.0" fill="#e0e0e0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="hanging" data-station-id="compile_results" class="nf-metro-station-label">Compile Results</text>
+<text x="444.0" y="106.0" font-size="13.0" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="3.0" stroke-linejoin="round" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" aria-hidden="true" class="nf-metro-label-halo" text-anchor="middle" dominant-baseline="auto">Delly Call</text>
+<text x="444.0" y="106.0" font-size="13.0" fill="#e0e0e0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="auto" data-station-id="delly_call" class="nf-metro-station-label">Delly Call</text>
+<text x="504.0" y="131.0" font-size="13.0" fill="#2b2b2b" stroke="#2b2b2b" stroke-width="3.0" stroke-linejoin="round" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" aria-hidden="true" class="nf-metro-label-halo" text-anchor="middle" dominant-baseline="hanging">Extrac Is Candid</text>
+<text x="504.0" y="131.0" font-size="13.0" fill="#e0e0e0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="bold" text-anchor="middle" dominant-baseline="hanging" data-station-id="extract_is_candidates" class="nf-metro-station-label">Extrac Is Candid</text>
+<rect x="60.0" y="200.0" width="90.80000000000001" height="48.0" rx="6" ry="6" fill="rgba(0, 0, 0, 0.3)" class="nf-metro-legend-bg" />
+<path d="M72.0,224.0 L96.0,224.0" stroke="#2db572" stroke-width="3.0" stroke-linecap="round" />
+<text x="108.0" y="224.0" font-size="14.0" fill="#e0e0e0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" dy="0.3em" class="nf-metro-legend-text">Main</text>
+<text x="833.0" y="264.0" font-size="8" fill="rgba(150, 150, 150, 0.6)" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" text-anchor="end">created with nf-metro v1.1.0</text>
+</svg>

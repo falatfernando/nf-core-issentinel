@@ -1,0 +1,66 @@
+flowchart TB
+    subgraph " "
+    v0["channel.empty"]
+    v2["channel.fromList"]
+    v7["channel.empty"]
+    v8["channel.fromPath"]
+    v10["channel.fromPath"]
+    v13["channel.fromPath"]
+    v16["channel.empty"]
+    v22["channel.empty"]
+    v28[" "]
+    v38["channel.of"]
+    end
+    subgraph " "
+    v1["versions"]
+    v12["ch_is_fasta"]
+    v17["ch_candidates"]
+    v23["ch_compiled_raw"]
+    v26[" "]
+    v27["ch_compiled_raw"]
+    v42[" "]
+    end
+    subgraph "NFCORE_ISSENTINEL [NFCORE_ISSENTINEL]"
+    subgraph "NFCORE_ISSENTINEL:ISSENTINEL [ISSENTINEL]"
+    v15(["INDEX_REFERENCE"])
+    subgraph "NFCORE_ISSENTINEL:ISSENTINEL:DETECT_IS [DETECT_IS]"
+    v18(["BWA_ALIGN"])
+    v19(["DELLY_CALL"])
+    v20(["EXTRACT_IS_CANDIDATES"])
+    end
+    v25(["COMPILE_RESULTS"])
+    v9(( ))
+    v11(( ))
+    v14(( ))
+    v21(( ))
+    v29(( ))
+    end
+    end
+    subgraph "PIPELINE_INITIALISATION [PIPELINE_INITIALISATION]"
+    v3(( ))
+    end
+    v0 --> v1
+    v2 --> v3
+    v7 --> v29
+    v8 --> v9
+    v10 --> v11
+    v11 --> v12
+    v13 --> v14
+    v14 --> v15
+    v15 --> v18
+    v15 --> v19
+    v16 --> v17
+    v3 --> v18
+    v14 --> v18
+    v18 --> v19
+    v14 --> v19
+    v19 --> v20
+    v9 --> v20
+    v20 --> v21
+    v22 --> v23
+    v21 --> v25
+    v25 --> v27
+    v25 --> v26
+    v28 --> v29
+    v38 --> v29
+    v29 --> v42
